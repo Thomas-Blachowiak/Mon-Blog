@@ -34,15 +34,14 @@
 						</div>
 					</div>
 				</div>
-			{% endif %}
-		{% endfor %}
+			
 		<ul class="nav nav-pills"></ul>
 	</header>
 	</div>
 	<main class="container-sm">
 		<div class="row">
 			<div class="col-md-8">
-				<h3 class="pb-4 mb-4 fst-italic border-bottom">Photos du Voyage</h3>
+				<h3 class="pb-4 mb-4 fst-italic border-bottom">Photos du Voyage en {{ category.ou }}</h3>
 				<div class="row row-cols-1 g-4 d-flex justify-content-center align-items-center">
 					<div class="col-8">
 					{% for annonce in annonce %}
@@ -50,7 +49,7 @@
 						<div class="card my-4 bg-warning">
 							<img src="{{ asset('uploads/images/' ~ annonce.photo)}}" class="card-img-top" alt="montagne">
 							<div class="card-body">
-								<h5 class="card-title" id="annonceName{{loop.index}}">{{ annonce.name }}</h5>
+								<h5 class="card-title" id="annonceName{{loop.index}}">{{ category.ou }}, {{ annonce.name }}</h5>
 								<p class="card-text">{{ annonce.content }}</p>
 							</div>
 							<!-- Boutton de la Modal -->
@@ -60,6 +59,9 @@
 						</div>
 						{% endif %}
 					{% endfor %}
+
+					{% endif %}
+		{% endfor %}
 						<!-- Modal ou l'on met le formulaire du commentaire -->
 						<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog">

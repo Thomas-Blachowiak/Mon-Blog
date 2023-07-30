@@ -1,12 +1,22 @@
-
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
-/public/bundles/
+/node_modules/
+
+
+
 /var/
+/var/log/
 /vendor/
+*~
+~*.swp
+
+/composer.phar
+/package-lock.json
+/yarn.lock
+
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###
@@ -25,5 +35,6 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
 
 .DS_Store

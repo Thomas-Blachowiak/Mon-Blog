@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ForetController extends AbstractController
@@ -35,6 +36,10 @@ class ForetController extends AbstractController
             $this->entityManager->persist($comment);
             $this->entityManager->flush();
 
+            // Ajouter un message flash pour l'alerte de succès
+            $this->addFlash('success', 'Votre message a été envoyé avec succès !');
+
+
             return $this->redirectToRoute('foret');
 
         }
@@ -47,7 +52,7 @@ class ForetController extends AbstractController
             'comment' => $commentRepository->findBy([], []),
         ]);
     }
-    
+
     #[Route('/admin/comment/approve/{id}', name: 'admin_comment_approve')]
     public function approveTestimonial(comment $comment): Response
     {

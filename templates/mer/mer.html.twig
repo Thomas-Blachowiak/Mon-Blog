@@ -5,117 +5,122 @@
 
 {% block body %}
 	<div class="container-fluid">
-		<div class="row">
-			{% for category in category %}
-				{% if category.name == 'Road Trip à la mer' %}
-			<div class="col-4"></div>
-			<div class="col-4">
-				<h1 class="text-center my-4">Road Trip à la mer</h1>
-				<p class="text-center">{{ category.content}}</p>
-			</div>
-			<div class="col-4"></div>
-		</div>
-	</div>
-	<div class="container-sm">
-		<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-6">
-								<h5>Quand ?</h5>
-								<p>{{ category.quand }}</p>
-							</div>
-							<div class="col-md-6">
-								<h5>Où ?</h5>
-								<p>{{ category.ou }}</p>
-							</div>
-						</div>
-					</div>
-					<ul class="nav nav-pills"></ul>
-				</header>
-			</div>
-			<main class="container-sm">
-				<div class="row">
-					<div class="col-md-8">
-						<h3 class="pb-4 mb-4 fst-italic border-bottom">Photos du Voyage en{{ category.ou }}</h3>
-						<div class="row row-cols-1 g-4 d-flex justify-content-center align-items-center">
-							<div class="col-8">
-								{% for annonce in annonce %}
-									{% if annonce.category.name == 'Road Trip à la mer' %}
-										<div class="card my-4 bg-warning">
-											<img src="{{ asset('uploads/images/' ~ annonce.photo)}}" class="card-img-top" alt="mer">
-											<div class="card-body">
-												<h5 class="card-title" id="annonceName{{loop.index}}">{{ annonce.name }}</h5>
-												<p class="card-text">{{ annonce.content }}</p>
-												<!-- Boutton de la Modal -->
-												<button type="button" onclick="preRemplir({{" annonceName" ~ loop.index}})" class="btn btn-success col-12 my-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
-													Je laisse un commentaire
-												</button>
-											</div>
-										</div>
-									{% endif %}
-								{% endfor %}
-								<button type="button" class="btn btn-success col-12 mb-5">
-									<a class="nav-link" href="{{ path('comment')}}">Voir les commentaires</a>
-								</button>
-								<!-- Modal ou l'on met le formulaire du commentaire -->
-								<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-											</div>
-											<div class="modal-body">
-												<h1 class="text-center my-4">Votre commentaire</h1>
-												{{ form_start(commentForm, {'attr': {'id': 'form-contact'}}
-												) }}
-												<div class="form-group">
-													<p class="bold-title">Nom :</p>
-													{{ form_widget(commentForm.lastName, {'attr': {'class': 'form-control'}}) }}
-													{{ form_errors(commentForm.lastName) }}
-												</div>
-												<div class="form-group mt-3" id="formContent">
-													<p class="bold-title">Votre commentaire :</p>
-													{{ form_widget(commentForm.content, {'attr': {'id': 'comment-form'}}) }}
-													{{ form_errors(commentForm.content) }}
-												</div>
-												<div class="form-group mt-3" id="formAnnonce">
-													<p class="bold-title">Annonce concerné :</p>
-													{{ form_widget(commentForm.annonce, {'attr': {'class': 'form-control'}}) }}
-													{{ form_errors(commentForm.annonce) }}
-												</div>
-												<div class="form-group mt-3">
-													<p class="bold-title">RGPD :</p>
-													{{ form_widget(commentForm.rgpd, {'attr': {'class': 'form-check-input'}}) }}
-													{{ form_label(commentForm.rgpd, 'J\'accepte les conditions RGPD', {'label_attr': {'class': 'form-check-label'}}) }}
-													{{ form_errors(commentForm.rgpd) }}
-												</div>
-												<div class="d-flex justify-content-center">
-													<button type="submit" class="btn btn-success my-3">Envoyer</button>
-												</div>
-												{{ form_end(commentForm) }}
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-success" data-bs-dismiss="modal">Fermer</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 mb-5">
-						<div class="position-sticky" style="top:2rem;">
-							<div class="col">
-								<h3>Histoire</h3>
-								<p>{{ category.pourquoi }}</p>
-							</div>
-						</div>
-					</div>
-				{% endif %}
-			{% endfor %}
-		</div>
-	</main>
+    {% for category in category %}
+        {% if category.name == 'Road Trip à la mer' %}
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center my-4">Road Trip à la mer</h1>
+                    <p class="text-center">{{ category.content}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-sm">
+            <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Quand ?</h5>
+                            <p>{{ category.quand }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Où ?</h5>
+                            <p>{{ category.ou }}</p>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav nav-pills"></ul>
+            </header>
+        </div>
+        <main class="container-sm">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="pb-4 mb-4 fst-italic border-bottom">Photos du Voyage en{{ category.ou }}</h3>
+                    <div class="row row-cols-1 g-4 d-flex justify-content-center align-items-center">
+                        {% for annonce in annonce %}
+                            {% if annonce.category.name == 'Road Trip à la mer' %}
+                                <div class="col-12">
+                                    <div class="card my-4 bg-warning">
+                                        <img src="{{ asset('uploads/images/' ~ annonce.photo)}}" class="card-img-top"
+                                            alt="mer">
+                                        <div class="card-body">
+                                            <h5 class="card-title" id="annonceName{{loop.index}}">{{ annonce.name }}</h5>
+                                            <p class="card-text">{{ annonce.content }}</p>
+                                            <!-- Boutton de la Modal -->
+                                            <button type="button" onclick="preRemplir({{" annonceName" ~ loop.index}})"
+                                                class="btn btn-success col-12 my-1" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
+                                                Je laisse un commentaire
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        <div class="col-12 mb-5">
+                            <button type="button" class="btn btn-success col-12">
+                                <a class="nav-link" href="{{ path('comment')}}">Voir les commentaires</a>
+                            </button>
+                        </div>
+                        <!-- Modal ou l'on met le formulaire du commentaire -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h1 class="text-center my-4">Votre commentaire</h1>
+                                        {{ form_start(commentForm, {'attr': {'id': 'form-contact'}}) }}
+                                        <div class="form-group">
+                                            <p class="bold-title">Nom :</p>
+                                            {{ form_widget(commentForm.lastName, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(commentForm.lastName) }}
+                                        </div>
+                                        <div class="form-group mt-3" id="formContent">
+                                            <p class="bold-title">Votre commentaire :</p>
+                                            {{ form_widget(commentForm.content, {'attr': {'id': 'comment-form'}}) }}
+                                            {{ form_errors(commentForm.content) }}
+                                        </div>
+                                        <div class="form-group mt-3" id="formAnnonce">
+                                            <p class="bold-title">Annonce concerné :</p>
+                                            {{ form_widget(commentForm.annonce, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(commentForm.annonce) }}
+                                        </div>
+                                        <div class="form-group mt-3">
+                                            <p class="bold-title">RGPD :</p>
+                                            {{ form_widget(commentForm.rgpd, {'attr': {'class': 'form-check-input'}}) }}
+                                            {{ form_label(commentForm.rgpd, 'J\'accepte les conditions RGPD', {'label_attr': {'class': 'form-check-label'}}) }}
+                                            {{ form_errors(commentForm.rgpd) }}
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <button type="submit" class="btn btn-success my-3">Envoyer</button>
+                                        </div>
+                                        {{ form_end(commentForm) }}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Fermer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-5">
+                    <div class="position-sticky" style="top:2rem;">
+                        <div class="col">
+                            <h3>Histoire</h3>
+                            <p>{{ category.pourquoi }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</main>
+
 	<script>
 		function preRemplir(annonceName) {
 			const nameAnnonce = document.getElementById(annonceName.id).textContent;

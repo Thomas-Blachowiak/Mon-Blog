@@ -35,7 +35,7 @@ class ForetController extends AbstractController
             $this->entityManager->persist($comment);
             $this->entityManager->flush();
 
-            return $this->redirectToRoute('montagne');
+            return $this->redirectToRoute('foret');
 
         }
         
@@ -47,7 +47,8 @@ class ForetController extends AbstractController
             'comment' => $commentRepository->findBy([], []),
         ]);
     }
-    #[Route('foret/comment/approved', name: 'foret_approved')]
+    
+    #[Route('/admin/comment/approve/{id}', name: 'admin_comment_approve')]
     public function approveTestimonial(comment $comment): Response
     {
         $comment->setApproved(true);
@@ -56,7 +57,7 @@ class ForetController extends AbstractController
         return $this->redirectToRoute('admin_comment');
     }
 
-    #[Route('/foret/comment/disapprove', name: 'foret_disapproved')]
+    #[Route('/admin/comment/disapprove/{id}', name: 'admin_comment_disapprove')]
     public function disapproveTestimonial(comment $comment): Response
     {
         $comment->setApproved(false);

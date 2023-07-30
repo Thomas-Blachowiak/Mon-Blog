@@ -49,17 +49,19 @@
 						<div class="card my-4 bg-warning">
 							<img src="{{ asset('uploads/images/' ~ annonce.photo)}}" class="card-img-top" alt="montagne">
 							<div class="card-body">
-								<h5 class="card-title" id="annonceName{{loop.index}}">{{ category.ou }}, {{ annonce.name }}</h5>
+								<h5 class="card-title" id="annonceName{{loop.index}}">{{ annonce.name }}</h5>
 								<p class="card-text">{{ annonce.content }}</p>
-							</div>
 							<!-- Boutton de la Modal -->
-							<button type="button" onclick="preRemplir({{"annonceName" ~ loop.index}})" class="btn btn-success col-12" data-bs-toggle="modal" data-bs-target="#exampleModal">
+							<button type="button" onclick="preRemplir({{"annonceName" ~ loop.index}})" class="btn btn-success col-12 my-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
 								Je laisse un commentaire
 							</button>
+							</div>
 						</div>
 						{% endif %}
 					{% endfor %}
-
+							<button type="button" class="btn btn-success col-12 mb-5">
+								<a class="nav-link" href="{{ path('montagne')}}">Voir les commentaires</a>
+							</button>
 					{% endif %}
 		{% endfor %}
 						<!-- Modal ou l'on met le formulaire du commentaire -->
@@ -103,7 +105,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4 mb-5">
 				<div class="position-sticky" style="top:2rem;">
 					<div class="col">
 							<h3>Commentaire laissés :</h3>
@@ -130,8 +132,10 @@
 
 			const nameAnnonce = document.getElementById(annonceName.id).textContent;
 			console.log(nameAnnonce);
-			const contentField = document.querySelector("#comment_annonce");
+			const contentField = document.querySelector("#comment_annonce.form-control");
+			console.log(contentField);
 			contentField.value = nameAnnonce;
+			console.log(contentField.value);
 		}
 	</script>
 {% endblock %}

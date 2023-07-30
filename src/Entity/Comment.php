@@ -24,8 +24,11 @@ class Comment
     #[ORM\Column]
     private ?bool $approved = null;
 
-    #[ORM\ManyToOne(inversedBy: 'comment')]
-    private ?Annonce $annonce = null;
+    #[ORM\Column]
+    private ?bool $rgpd = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $annonce = null;
 
     public function getId(): ?int
     {
@@ -67,13 +70,29 @@ class Comment
 
         return $this;
     }
+    public function isRgpd(): ?bool
+    {
+        return $this->rgpd;
+    }
 
-    public function getAnnonce(): ?Annonce
+    public function setRgpd(bool $rgpd): static
+    {
+        $this->rgpd = $rgpd;
+
+        return $this;
+    }
+    public function __toString(): string
+    {
+        // Renvoie la chaîne que vous souhaitez afficher pour l'objet Comment
+        return $this->lastName ?? 'Commentaire sans nom'; // Par exemple, affiche le nom du commentateur s'il existe, sinon affiche 'Commentaire sans nom'
+    }
+
+    public function getAnnonce(): ?string
     {
         return $this->annonce;
     }
 
-    public function setAnnonce(?Annonce $annonce): static
+    public function setAnnonce(string $annonce): static
     {
         $this->annonce = $annonce;
 

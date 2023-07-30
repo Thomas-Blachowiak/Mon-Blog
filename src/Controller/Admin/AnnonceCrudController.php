@@ -25,7 +25,6 @@ class AnnonceCrudController extends AbstractCrudController
         ->setUploadDir('public/uploads/images')
         ->setSortable(false);
         yield AssociationField::new('category', 'Catégorie')
-        ->setLabel('name');
-        yield AssociationField::new('comment', 'Commentaire');
+        ->setLabel('name');    
     }
 }

@@ -22,7 +22,9 @@ class CommentCrudController extends AbstractCrudController
         yield    TextareaField::new('content', 'Contenue');
         yield    BooleanField::new('approved', 'Approuvé')
                     ->renderAsSwitch();
-        yield AssociationField::new('annonce', 'Annonce');
+        yield    BooleanField::new('rgpd', 'rgpd')
+                    ->renderAsSwitch();
+        yield TextField::new('annonce', 'Annonce');
     }
 
 }

@@ -48,17 +48,19 @@
 								<div class="card my-4 bg-warning">
 									<img src="{{ asset('uploads/images/' ~ annonce.photo)}}" class="card-img-top" alt="mer">
 									<div class="card-body">
-										<h5 class="card-title" id="annonceName{{loop.index}}">{{ category.ou }}, {{ annonce.name }}</h5>
+										<h5 class="card-title" id="annonceName{{loop.index}}">{{ annonce.name }}</h5>
 										<p class="card-text">{{ annonce.content }}</p>
+<!-- Boutton de la Modal -->
+							<button type="button" onclick="preRemplir({{"annonceName" ~ loop.index}})" class="btn btn-success col-12 my-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+								Je laisse un commentaire
+							</button>
 									</div>
-									<!-- Boutton de la Modal -->
-									<button type="button" onclick="preRemplir({{"annonceName" ~ loop.index}})" class="btn btn-success col-12" data-bs-toggle="modal" data-bs-target="#exampleModal">
-										Je laisse un commentaire
-									</button>
 								</div>
 							{% endif %}
 						{% endfor %}
-
+							<button type="button" class="btn btn-success col-12 mb-5">
+								<a class="nav-link" href="{{ path('montagne')}}">Voir les commentaires</a>
+							</button>
 
 			{% endif %}
 		{% endfor %}
@@ -124,5 +126,16 @@
 			</div>
 		</div>
 	</main>
+			<script>
+		function preRemplir(annonceName) {
+
+			const nameAnnonce = document.getElementById(annonceName.id).textContent;
+			console.log(nameAnnonce);
+			const contentField = document.querySelector("#comment_annonce.form-control");
+			console.log(contentField);
+			contentField.value = nameAnnonce;
+			console.log(contentField.value);
+		}
+	</script>
 {% endblock %}
 

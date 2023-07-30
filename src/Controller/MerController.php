@@ -39,10 +39,6 @@ class MerController extends AbstractController
             $this->entityManager->persist($comment);
             $this->entityManager->flush();
 
-            
-    // Ajouter un message flash
-    $this->addFlash('success', 'Le commentaire a été envoyé avec succès.');
-
             return $this->redirectToRoute('mer');
 
         }

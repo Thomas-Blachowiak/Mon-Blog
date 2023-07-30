@@ -3,13 +3,16 @@
 namespace App\Form;
 
 use App\Entity\Comment;
+use Proxies\__CG__\App\Entity\Annonce;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class CommentType extends AbstractType
 {
@@ -28,10 +31,16 @@ class CommentType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-            ->add('annonce', EntityType::class, [
-                'class' => 'App\Entity\Annonce',
-                'label' => 'Annonce',
-
+            ->add('annonce', TextType::class, [
+                'label' => 'Votre nom',
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('rgpd', CheckboxType::class, [
+                'constraints' => [
+                    new NotBlank()
+                ]
             ])
         ;
     }

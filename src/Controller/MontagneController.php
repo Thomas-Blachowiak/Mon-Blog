@@ -35,7 +35,7 @@ class MontagneController extends AbstractController
             $this->entityManager->persist($comment);
             $this->entityManager->flush();
 
-            return $this->redirectToRoute('mer');
+            return $this->redirectToRoute('montagne');
 
         }
         

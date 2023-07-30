@@ -29,16 +29,8 @@ class Annonce
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
-    #[ORM\OneToMany(mappedBy: 'annonce', targetEntity: Comment::class)]
-    private Collection $comment;
-
     #[ORM\Column(nullable: true)]
     private ?int $likes = 0;
-
-    public function __construct()
-    {
-        $this->comment = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -96,37 +88,6 @@ class Annonce
     {
         return $this->name;
     }
-
-    /**
-     * @return Collection<int, Comment>
-     */
-    public function getComment(): Collection
-    {
-        return $this->comment;
-    }
-
-    public function addComment(Comment $comment): static
-    {
-        if (!$this->comment->contains($comment)) {
-            $this->comment->add($comment);
-            $comment->setAnnonce($this);
-        }
-
-        return $this;
-    }
-
-    public function removeComment(Comment $comment): static
-    {
-        if ($this->comment->removeElement($comment)) {
-            // set the owning side to null (unless already changed)
-            if ($comment->getAnnonce() === $this) {
-                $comment->setAnnonce(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getLikes(): ?int
     {
         return $this->likes;

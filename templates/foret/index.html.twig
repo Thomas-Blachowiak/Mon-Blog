@@ -1,17 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Road Trip à la montagne
-{% endblock %}
+{% block title %}Balade en forêt{% endblock %}
 
 {% block body %}
 	<div class="container-fluid">
 			{% for category in category %}
-				{% if category.name == 'Road Trip à la Montagne' %}
+				{% if category.name == 'Balade en forêt' %}
 		<div class="row">
 			<div class="col-4"></div>
 			<div class="col-4">
-				<h1 class="text-center my-4">Road Trip à la montagne</h1>
-				<p class="text-center">{{ category.content}}</p>
+				<h1 class="text-center my-4">Balade en forêt</h1>
+                <p class="text-center">{{ category.content}}</p>
 			</div>
 			<div class="col-4"></div>
 		</div>
@@ -36,13 +35,13 @@
 			<main class="container-sm">
 				<div class="row">
 					<div class="col-md-8">
-						<h3 class="pb-4 mb-4 fst-italic border-bottom">Photos du Voyage en {{ category.ou }}</h3>
+						<h3 class="pb-4 mb-4 fst-italic border-bottom">Photos du Voyage en{{ category.ou }}</h3>
 						<div class="row row-cols-1 g-4 d-flex justify-content-center align-items-center">
 							<div class="col-8">
 								{% for annonce in annonce %}
-									{% if annonce.category.name == 'Road Trip à la Montagne' %}
+									{% if annonce.category.name == 'Balade en forêt' %}
 										<div class="card my-4 bg-warning">
-											<img src="{{ asset('uploads/images/' ~ annonce.photo)}}" class="card-img-top" alt="montagne">
+											<img src="{{ asset('uploads/images/' ~ annonce.photo)}}" class="card-img-top" alt="mer">
 											<div class="card-body">
 												<h5 class="card-title" id="annonceName{{loop.index}}">{{ annonce.name }}</h5>
 												<p class="card-text">{{ annonce.content }}</p>
@@ -110,7 +109,6 @@
 			{% endfor %}
 		</div>
 	</main>
-
 	<script>
 		function preRemplir(annonceName) {
 			const nameAnnonce = document.getElementById(annonceName.id).textContent;

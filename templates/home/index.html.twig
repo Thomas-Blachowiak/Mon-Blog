@@ -4,61 +4,73 @@
 {% endblock %}
 
 {% block body %}
-<section class="container m-3">
-    <h1 class="text-center">L'histoire d'une vie</h1>
-    <article class="row justify-content-center my-4">
-        <div class="col-md-6 mb-4 d-flex align-items-center">
-            <p class="text-center">
-                Plongez au cœur d'un univers préservé et enchanteur, où la beauté sauvage de la nature s'épanouit dans toute sa splendeur. 
-                Bienvenue sur notre blog dédié à la nature, un refuge virtuel où vous pourrez explorer les merveilles 
-                de notre planète et vous émerveiller face à la richesse infinie de la vie qui nous entoure.
-            </p>
-        </div>
-        <div class="col-md-6 d-flex justify-content-center">
-            <img src="{{ asset('/images/logo.jpg')}}" class="img-fluid rounded" style="max-width: 350px" alt="logo">
-        </div>
-    </article>
-    <article class="row justify-content-center my-4">
-        <div class="col-md-6 d-flex justify-content-center">
-            <img src="{{ asset('/images/nature1.jpg')}}" class="img-fluid rounded" style="max-width: 350px" alt="logo">
-        </div>
-        <div class="col-md-6 mb-4 d-flex align-items-center">
-            <p class="text-center">
-                Plongez au cœur d'un univers préservé et enchanteur, où la beauté sauvage de la nature s'épanouit dans toute sa splendeur. 
-                Bienvenue sur notre blog dédié à la nature, un refuge virtuel où vous pourrez explorer les merveilles 
-                de notre planète et vous émerveiller face à la richesse infinie de la vie qui nous entoure.
-            </p>
-        </div>
-    </article>
-    <article class="row justify-content-center my-4">
-        <div class="col-md-6 mb-4 d-flex align-items-center">
-            <p class="text-center">
-                Dans ce sanctuaire virtuel, nous vous invitons à un voyage sensoriel à travers les paysages majestueux, 
-                les forêts mystiques, les océans éternels et les vastes déserts. De la faune fascinante aux plantes exotiques, 
-                chaque recoin de la nature détient une histoire captivante qui ne demande qu'à être racontée.
-            </p>
-        </div>
-        <div class="col-md-6 d-flex justify-content-center">
-            <img src="{{ asset('/images/nature2.jpg')}}" class="img-fluid rounded" style="max-width: 350px" alt="logo">
-        </div>
-    </article>
-    <article class="row justify-content-center my-4">
-        <div class="col-md-6 d-flex justify-content-center">
-            <img src="{{ asset('/images/nature3.jpg')}}" class="img-fluid rounded" style="max-width: 350px" alt="logo">
-        </div>
-        <div class="col-md-6 mb-4 d-flex align-items-center">
-            <p class="text-center">
-                Nous sommes emplis de gratitude de vous accueillir dans cette aventure naturelle. 
-                Préparez-vous à plonger dans un océan d'émerveillement et de connaissance. 
-                Prêt à faire partie de cette communauté qui célèbre la beauté de la nature 
-                et s'engage à la protéger pour les générations futures ? 
-                Alors, suivez-nous, et ensemble, marchons sur le sentier de la découverte, 
-                dans l'incroyable jardin de la vie."
-            </p>
-        </div>
-    </article>
-</section>
+	<div class="container">
+		<h1 class="text-center m-4">L'histoire d'une vie</h1>
+		<style>
+			@media(max-width: 400px) {
+				img {
+					max-width: 250px;
+					height: auto; /* Pour conserver le ratio d'aspect de l'image */
+				}
+			}
+		</style>
 
-
+		<div class="clearfix my-3">
+			<img src="{{ asset('/images/accueil.jpeg')}}" class="col-md-6 col-sm-12 float-md-end mb-3 ms-md-3" alt="...">
+			<p>
+                La mer est un vaste océan aux eaux cristallines qui s'étendent à l'infini. 
+                Le doux bruit des vagues caresse nos oreilles, apportant une sérénité incomparable. 
+                Se perdre dans l'horizon bleu, face au soleil couchant, c'est comme toucher l'éternité.			
+            </p>
+			<p>
+                Les embruns salés chatouillent notre peau alors que nous explorons les profondeurs marines. 
+                Les coraux multicolores abritent une faune marine étonnante et mystérieuse. 
+                La plongée sous-marine nous permet de découvrir un monde sous-marin insoupçonné.			
+            </p>
+			<p>
+                Sur le sable chaud, on se laisse bercer par les rayons du soleil. 
+                La plage est un véritable paradis où l'on peut se détendre et laisser nos soucis s'envoler avec le vent. 
+                Les jeux d'enfants et les rires s'entremêlent pour créer des souvenirs inoubliables.			
+            </p>
+		</div>
+		<div class="clearfix my-3">
+			<img src="{{ asset('/images/accueil3.jpeg')}}" class="col-md-6 float-md-start mb-3 ms-md-3 mx-2" alt="...">
+			<p>
+                Sur le sable chaud, on se laisse bercer par les rayons du soleil. 
+                La plage est un véritable paradis où l'on peut se détendre et laisser nos soucis s'envoler avec le vent. 
+                Les jeux d'enfants et les rires s'entremêlent pour créer des souvenirs inoubliables.			
+            </p>
+			<p>
+                La montagne offre un spectacle grandiose. Les sommets majestueux se dressent fièrement, touchant le ciel. 
+                L'air pur emplit nos poumons, nous invitant à l'aventure. 
+                Randonner dans ces sentiers escarpés est un défi qui récompense avec des panoramas à couper le souffle.			
+            </p>
+			<p>
+                Les montagnes sont les gardiennes de secrets anciens. 
+                Les forêts denses et mystiques cachent des créatures légendaires, et les cascades impétueuses 
+                créent une musique apaisante. S'éloigner du tumulte de la ville pour se rapprocher de la nature nous permet de 
+                nous ressourcer.			
+            </p>
+		</div>
+		<div class="clearfix">
+			<img src="{{ asset('/images/accueil2.jpeg')}}" class="col-md-6 float-md-end mb-3 ms-md-3" alt="...">
+			<p>
+                La forêt est un refuge verdoyant où les arbres s'entrelacent pour former un dôme protecteur. 
+                La lumière tamisée à travers les feuillages crée une ambiance paisible propice à la méditation. 
+                Les randonnées au cœur de la forêt nous ressourcent et renforcent notre lien avec la Terre.			
+            </p>
+			<p>
+                Le chant des oiseaux et le bruissement des feuilles nous enveloppent, 
+                nous invitant à nous perdre dans ce dédale végétal. Les sentiers de la forêt nous guident vers 
+                des clairières secrètes, où le temps semble suspendu. C'est un endroit où l'on se sent en harmonie 
+                avec la nature.			
+            </p>
+			<p>
+                La forêt recèle de trésors cachés. Les champignons poussent timidement sous les sous-bois, 
+                les animaux discrets se faufilent entre les branches. Observer la vie foisonnante de la forêt 
+                nous rappelle la diversité et la richesse de notre écosystème.			
+            </p>
+		</div>
+	</div>
 {% endblock %}
 

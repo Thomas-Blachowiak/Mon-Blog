@@ -1,10 +1,11 @@
-@import "custom";
-@import "~bootstrap/scss/bootstrap";
-
 $primary : #ABA6BF; 
 $secondary : #583E2E;
 $success : #F1E0D6;
 $warning : #BF988F;
+
+@import "custom";
+@import "~bootstrap/scss/bootstrap";
+
 
 body {
     background-color: #ABA6BF;

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Annonce;
 use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Repository\AnnonceRepository;
@@ -11,7 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+
 use Symfony\Component\Routing\Annotation\Route;
 
 class ForetController extends AbstractController
@@ -25,6 +26,9 @@ class ForetController extends AbstractController
     #[Route('/foret', name: 'foret')]
     public function index(AnnonceRepository $annonceRepository, CategoryRepository $categoryRepository, CommentRepository $commentRepository, Request $request): Response
     {
+        
+
+
         $comment = new Comment();
         $comment->setApproved(false);
 
@@ -70,4 +74,26 @@ class ForetController extends AbstractController
 
         return $this->redirectToRoute('admin_comment');
     }
+
+#[Route("/like", name:"like", methods:"POST")]
+public function like(Request $request): Response
+{
+    $annonceId = $request->request->get('annonceId');
+    $annonce = $this->entityManager->getRepository(Annonce::class)->find($annonceId);
+
+    if (!$annonce) {
+        throw $this->createNotFoundException('Article non trouvé.');
+    }
+
+    // Vérifier si l'utilisateur a déjà liké cet article
+    // Vous pouvez gérer cela en utilisant le système d'authentification de Symfony
+
+    // Incrémenter le nombre de likes pour cet article
+    $annonce->incrementLikes();
+    $this->entityManager->flush();
+
+    // Répondre avec un statut 200 pour indiquer que tout s'est bien passé
+    return new Response('Like ajouté avec succès', Response::HTTP_OK);
+}
+
 }

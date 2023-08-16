@@ -6,6 +6,7 @@ use App\Entity\Annonce;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -25,6 +26,7 @@ class AnnonceCrudController extends AbstractCrudController
         ->setUploadDir('public/uploads/images')
         ->setSortable(false);
         yield AssociationField::new('category', 'Catégorie')
-        ->setLabel('name');    
+        ->setLabel('name');
+        yield    IntegerField::new('likes', 'Nom');
     }
 }

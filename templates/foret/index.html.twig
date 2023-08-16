@@ -50,6 +50,10 @@
                                                 data-bs-target="#exampleModal">
                                                 Je laisse un commentaire
                                             </button>
+                                            <button type="button" class="btn btn-primary like-btn" data-annonce-id="{{ loop.index }}">
+        Like
+    </button>
+    <span id="likeCount{{ loop.index }}">0</span> Likes
                                         </div>
                                     </div>
                                 {% endif %}
@@ -127,5 +131,40 @@
 			console.log(contentField.value);
 		}
 	</script>
+<script>
+    // Récupérer tous les boutons "Like"
+    const likeButtons = document.querySelectorAll(".like-btn");
+
+    // Ajouter un gestionnaire d'événement pour chaque bouton "Like"
+    likeButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            // Récupérer l'ID de l'annonce associée au bouton "Like"
+            const annonceId = button.dataset.annonceId;
+
+            // Envoyer une requête AJAX au endpoint Symfony pour enregistrer le like en BDD
+            fetch('/like', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `annonceId=${annonceId}`,
+            })
+            .then(response => {
+                // Si la requête s'est bien déroulée, mettre à jour le compteur de likes côté client
+                if (response.ok) {
+                    const likeCountSpan = document.getElementById("likeCount.id" + annonceId);
+                    const currentLikes = parseInt(likeCountSpan.innerText);
+                    likeCountSpan.innerText = currentLikes + 1;
+                }
+            })
+            .catch(error => {
+                console.error('Erreur lors de la requête :', error);
+            });
+        });
+    });
+</script>
+
+
+
 {% endblock %}
 

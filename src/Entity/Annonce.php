@@ -99,4 +99,9 @@ class Annonce
 
         return $this;
     }
+    public function incrementLikes(): self
+    {
+        $this->likes++;
+        return $this;
+    }
 }

@@ -7,13 +7,13 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Borel&display=swap" rel="stylesheet">
-
-        {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
-
         
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" defer></script>
+        {% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+	{% endblock %}
+    
     </head>
+   
     <body>
         <nav>
             {% include "menu/nav.html.twig" %}
@@ -22,8 +22,11 @@
         <footer>
             {% include "menu/footer.html.twig" %}
         </footer>
+	
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	{% block javascripts %}
+	    {{ encore_entry_script_tags('app') }}
+	{% endblock %}
 
-        {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
-        
     </body>
 </html>

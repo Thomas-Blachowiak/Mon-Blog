@@ -10,7 +10,6 @@
 
         {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
 
-        {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
         
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" defer></script>
@@ -23,11 +22,8 @@
         <footer>
             {% include "menu/footer.html.twig" %}
         </footer>
+
+        {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
+        
     </body>
 </html>
-
-<script src="{{ asset('assets/app.js')}}"></script>
-        <link href="{{ asset('assets/styles/app.scss')}}" rel="stylesheet">
-        <link href="{{ asset('assets/styles/custom.scss')}}" rel="stylesheet">
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
